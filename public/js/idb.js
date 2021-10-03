@@ -39,13 +39,11 @@ function uploadTransaction() {
     // open a transaction on your db
     const transaction = db.transaction(['new_transaction'], 'readwrite');
   
-    // access your object store
     const budgetObjectStore = transaction.objectStore('new_transaction');
   
-    // get all transactions from store and set to a variable
     const getAll = budgetObjectStore.getAll();
   
-    // a successful .getAll() execution, run this function
+    
     getAll.onsuccess = function() {
     // if there was data in indexedDb's store, let's send it to the api server
     if (getAll.result.length > 0) {
